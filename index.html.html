@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Jacqueline ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:linear-gradient(135deg,#ff758c,#ff7eb3,#ffd1dc);
+    overflow-x:hidden;
+    color:white;
+}
+
+.hearts{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    z-index:0;
+}
+
+.heart{
+    position:absolute;
+    animation:floatUp linear forwards;
+}
+
+@keyframes floatUp{
+    from{
+        transform:translateY(100vh);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-120px);
+        opacity:0;
+    }
+}
+
+.container{
+    position:relative;
+    z-index:2;
+    max-width:900px;
+    margin:auto;
+    text-align:center;
+    padding:40px 20px;
+}
+
+h1{
+    font-size:3rem;
+    margin-bottom:20px;
+    text-shadow:0 0 15px rgba(255,255,255,0.5);
+}
+
+.photo-section{
+    margin:30px 0;
+}
+
+.photo-section img{
+    width:300px;
+    height:300px;
+    object-fit:cover;
+    border-radius:50%;
+    border:6px solid white;
+    box-shadow:0 0 30px rgba(255,255,255,0.8);
+    transition:0.5s;
+}
+
+.photo-section img:hover{
+    transform:scale(1.05);
+}
+
+.card{
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(10px);
+    border-radius:25px;
+    padding:30px;
+    margin-top:20px;
+}
+
+p{
+    font-size:1.2rem;
+    line-height:1.8;
+}
+
+.question{
+    margin-top:35px;
+    font-size:2rem;
+    font-weight:bold;
+}
+
+button{
+    border:none;
+    border-radius:50px;
+    padding:15px 35px;
+    margin:15px;
+    font-size:1.1rem;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.yes{
+    background:white;
+    color:#ff4f81;
+    font-weight:bold;
+}
+
+.yes:hover{
+    transform:scale(1.1);
+}
+
+.no{
+    background:#d9d9d9;
+}
+
+.music-btn{
+    background:#fff;
+    color:#ff4f81;
+    margin-bottom:25px;
+}
+
+footer{
+    margin-top:50px;
+    opacity:.9;
+}
+</style>
+</head>
+
+<body>
+
+<div class="hearts" id="hearts"></div>
+
+<div class="container">
+
+    <button class="music-btn" onclick="playMusic()">
+        🎵 Reproducir Música
+    </button>
+
+    <audio id="bgMusic" loop>
+        <source src="love-song.mp3" type="audio/mpeg">
+    </audio>
+
+    <h1>❤️ Para Jacqueline ❤️</h1>
+
+    <div class="photo-section">
+        <img src="image(27).png" alt="Jacqueline">
+    </div>
+
+    <div class="card">
+        <p>
+            Querida Jacqueline,
+        </p>
+
+        <br>
+
+        <p>
+            Desde que llegaste a mi vida, mis días son más brillantes.
+            Tu sonrisa ilumina mis momentos más difíciles y tu presencia
+            hace que todo parezca más hermoso.
+        </p>
+
+        <br>
+
+        <p>
+            Me encanta tu forma de ser, tu dulzura y la felicidad
+            que transmites. Cada conversación contigo se convierte
+            en un recuerdo especial para mí.
+        </p>
+
+        <br>
+
+        <p>
+            Hoy quiero decirte algo que nace desde lo más profundo
+            de mi corazón...
+        </p>
+
+        <div class="question">
+            💖 ¿Quieres ser mi novia? 💖
+        </div>
+
+        <button class="yes" onclick="acceptLove()">
+            Sí ❤️
+        </button>
+
+        <button class="no" onclick="moveNo(this)">
+            No 😅
+        </button>
+    </div>
+
+    <footer>
+        Hecho con amor ❤️
+    </footer>
+
+</div>
+
+<script>
+function playMusic(){
+    document.getElementById("bgMusic").play();
+}
+
+function moveNo(btn){
+    btn.style.position="absolute";
+    btn.style.left=Math.random()*80+"%";
+    btn.style.top=Math.random()*80+"%";
+}
+
+function acceptLove(){
+    document.body.innerHTML=`
+    <div style="
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:linear-gradient(135deg,#ff758c,#ff7eb3);
+    color:white;
+    font-family:Segoe UI;">
+        <div>
+            <h1 style="font-size:60px;">
+                ❤️ ¡Gracias Jacqueline! ❤️
+            </h1>
+
+            <p style="font-size:25px;margin-top:20px;">
+                Has hecho este momento inolvidable para mí. 💕
+            </p>
+
+            <p style="font-size:20px;margin-top:10px;">
+                Prometo respetarte, apoyarte y compartir
+                muchos momentos hermosos contigo. ✨
+            </p>
+        </div>
+    </div>`;
+}
+
+function createHeart(){
+    const heart=document.createElement("div");
+
+    heart.classList.add("heart");
+    heart.innerHTML="❤️";
+
+    heart.style.left=Math.random()*100+"%";
+    heart.style.fontSize=(15+Math.random()*30)+"px";
+    heart.style.animationDuration=(4+Math.random()*5)+"s";
+
+    document.getElementById("hearts").appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },9000);
+}
+
+setInterval(createHeart,250);
+</script>
+
+</body>
+</html>
